@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>标签学习第十一章(css属性)</title>
+</head>
+<body style="background-repeat: no-repeat;background-image: url('C:\\Users\\lenovo\\Desktop\\图片\\picture15.jpg');background-attachment: fixed;font-size: 14pt;">
+	<!-- 
+	background-repeat: repeat重复
+	background-repeat: repeat-x横向填充重复
+	background-repeat: repeat-y纵向填充重复
+	background-repeat: no-repeat不重复 
+	-->
+	<p style="font-family: 隶书">隶书</p>
+	<p style="font-style: italic">斜体</p>
+	<p style="font-style: oblique;">倾斜</p>
+	<p style="font-weight: bold">字体加粗</p>
+	<p style="font-weight: bolder">字体加粗再加粗</p>
+	<p style="font-weight: lighter;">字体变细</p>
+	<p style="font-weight: 5">字体细为5</p>
+	<p style="font-weight: 50">字体细为50</p>
+	<p style="font-weight: 850">字体粗为850</p>
+	<p style="font-weight: 950">字体粗为950</p>
+
+	<p style="font-size: large">相对尺寸large</p>
+	<p style="font-size: small">相对尺寸small</p>
+
+	<p style="text-transform: uppercase;">dsadsszzcxd</p>
+	<p style="text-transform: lowercase;">SDSADSZCXSAD</p>
+	<p style="text-transform: capitalize;">xzcxzcxc首字母大写</p>
+
+	<p style="text-decoration: underline;">下划线</p>
+	<p style="text-decoration: overline;">上划线</p>
+	<p style="text-decoration: line-through;">给文字加上删除线</p>
+	<p style="word-spacing: 30px">apple bnanana apple</p>
+	<p style="letter-spacing: 15px">apple bnanana apple</p>
+	<p style="line-height: 30px">line-height</p>
+	<!-- text-align水平对齐 (left/right/center/justify(左右对齐)) -->
+	<!-- vertical-align垂直对齐(top/bottom/text-top/text-bottom/baseline/middle/sub/super) -->
+	<p style="text-indent: 30px">首行缩进</p>
+	
+
+	<a href="#">修改链接样式</a>
+
+
+	<p style="cursor: move">移动指针型</p>
+	<p style="cursor: crosshair;">十字型</p>
+
+	<table border="5" bordercolor="#00f" style="border-style: double;">
+		<thead style="background: blue;">
+			<tr>
+				<td>姓名</td><td>班级</td><td>学号</td><td>成绩</td>
+			</tr>
+		</thead>
+		<tbody style="background: yellow">
+			<tr>
+				<td style="cursor: pointer;">张三</td><td>八年三班</td><td>201533665201</td><td>285</td>
+			</tr>
+			<tr> 
+				<td style="cursor: pointer;">李四</td><td>六年三班</td><td>201533513213</td><td>333</td>
+			</tr>
+		</tbody>
+	</table>
+
+
+	<h3 style="position: relative;top: 40px;left: 100px;">距离上40px距离左100px(相对位置)</h3>
+	<!-- relative设置相对位置 -->
+	<h3 style="position: absolute;top: 40px;left: 100px;">距离上40px距离左100px(绝对位置)</h3>
+</body>
+</html>
+<style>
+	a{text-decoration: none;}
+	a:link{color: green;}
+	a:visited{color: red;}
+	a:active{color: blue;}
+	a:hover{color: black;font-family: blod;}
+</style>
+<!-- 
+css光标样式属性表
+值	描述
+url	需被使用的自定义光标的URL
+
+注释：请在此列表的末端始终定义一种普通的光标，以防没有由 URL 定义的可用光标。
+
+default	默认光标（通常是一个箭头）
+auto	默认。浏览器设置的光标。
+crosshair	光标呈现为十字线。
+pointer	光标呈现为指示链接的指针（一只手）
+move	此光标指示某对象可被移动。
+e-resize	此光标指示矩形框的边缘可被向右（东）移动。
+ne-resize	此光标指示矩形框的边缘可被向上及向右移动（北/东）。
+nw-resize	此光标指示矩形框的边缘可被向上及向左移动（北/西）。
+n-resize	此光标指示矩形框的边缘可被向上（北）移动。
+se-resize	此光标指示矩形框的边缘可被向下及向右移动（南/东）。
+sw-resize	此光标指示矩形框的边缘可被向下及向左移动（南/西）。
+s-resize	此光标指示矩形框的边缘可被向下移动（北/西）。
+w-resize	此光标指示矩形框的边缘可被向左移动（西）。
+text	此光标指示文本。
+wait	此光标指示程序正忙（通常是一只表或沙漏）。
+help	此光标指示可用的帮助（通常是一个问号或一个气球）。 -->
+
+
+
+<!-- 
+css边框样式属性表
+值	描述
+none	定义无边框。
+hidden	与 "none" 相同。不过应用于表时除外，对于表，hidden 用于解决边框冲突。
+dotted	定义点状边框。在大多数浏览器中呈现为实线。
+dashed	定义虚线。在大多数浏览器中呈现为实线。
+solid	定义实线。
+double	定义双线。双线的宽度等于 border-width 的值。
+groove	定义 3D 凹槽边框。其效果取决于 border-color 的值。
+ridge	定义 3D 垄状边框。其效果取决于 border-color 的值。
+inset	定义 3D inset 边框。其效果取决于 border-color 的值。
+outset	定义 3D outset 边框。其效果取决于 border-color 的值。
+inherit	规定应该从父元素继承边框样式。
+ -->

@@ -1,0 +1,14 @@
+<style>
+.nav-small{
+    padding: 0;
+    margin: 0;
+    width: 80%;
+    color: #999;
+}
+.nav-small-left{
+    text-align: left;
+}
+.nav-small-right{
+    text-align: right;;
+}
+</style>

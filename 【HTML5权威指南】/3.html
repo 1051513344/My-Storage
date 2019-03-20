@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>part3</title>
+</head>
+<body>
+	<header style="background-color: grey;height: 200px">
+	头部
+	<nav style="background-color: green;width: 30%;float: left;">左边</nav>
+	<aside style="background-color: red;width: 30%;float: right;">右边</aside>
+	<footer style="background-color: blue;">尾部</footer>
+	</header>
+	
+	<h3>表单编组</h3>
+	<form style="width: 18%">
+		<fieldset>
+			<legend>number1</legend>
+			<label>账号：<input type="text"></label>
+			<br>
+			<label>密码：<input type="text"></label>
+		</fieldset>
+		<fieldset>
+			<legend>number2</legend>
+			<label>账号：<input type="text" required></label>  <!-- input加上required属性表示 若提交时此输入框为空则提示 -->
+			<br>
+			<label>密码：<input type="text"></label>
+		</fieldset>
+		<fieldset disabled>
+			<legend>number3</legend>
+			<label>账号：<input type="text"></label>
+			<br>
+			<label>密码：<input type="text"></label>
+		</fieldset>
+		<input type="submit">
+	</form>
+	<hr>
+	<input list="number">
+	<datalist id="number">
+		<option value="1">1111</option>
+		<option value="2">2222</option>
+		<option value="3">3333</option>
+	</datalist>
+
+	<select name="o" id="d">
+		<optgroup label="第一组">
+			<option value="1">1111</option>
+			<option value="2">2222</option>
+			<option value="3">3333</option>
+		</optgroup>
+		<optgroup label="第二组">
+			<option value="4">4444</option>
+			<option value="5">5555</option>
+			<option value="6">6666</option>
+		</optgroup>
+	</select>
+
+	<form onsubmit="return false" 
+		oninput="res.value=quant.valueAsNumber * price.valueAsNumber">
+
+		<fieldset>
+			<legend>prsrs</legend>
+			<input type="number" id="quant" value="1">x
+			<input type="number" id="price" value="1">=
+			<output for="quant name" name="res">
+		</fieldset>
+	</form>
+	<form>
+		<fieldset>
+			<legend>emailtest</legend>
+			<input type="email" pattern=".*@qq.com$" placeholder="user@qq.com" required>
+		</fieldset>
+		<input type="submit">
+	</form>
+	<progress id="myprogress" value="10" max="100"></progress>
+	<p>
+		<button onclick="a()">30%</button>
+		<button onclick="b()">60%</button>
+		<button onclick="c()">90%</button>
+	</p>
+
+	<meter id="mymeter" value="90" min="10" max="100" low="40" high="80" optimum="60"></meter>
+	<p>
+		<button onclick="d()">30%</button>
+		<button onclick="e()">60%</button>
+		<button onclick="f()">90%</button>
+	</p>
+</body>
+<script>
+	
+	var progress=document.getElementById('myprogress');
+	var meter=document.getElementById('mymeter');
+	function a(){
+		progress.value=30;
+	}
+	function b(){
+		progress.value=60;
+	}
+	function c(){
+		progress.value=90;
+	}
+	function d(){
+		meter.value=30;
+	}
+	function e(){
+		meter.value=60;
+	}
+	function f(){
+		meter.value=90;
+	}
+</script>
+</html>

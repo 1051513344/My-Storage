@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>javascript汇总</title>
+	<link rel="stylesheet" href="css/semantic.css">
+</head>
+<body onload="mytime()">
+	<input type="button" value="欢迎你" onclick="javascript:alert('欢迎你的到来')" class="ui red button">
+	<div>
+		<h3 id="time">时间：</h3>
+	</div>
+	<a href="javascript:history.back()">返回主页面</a>
+</body>
+<script>
+
+	function mytime(){
+		var today=new Date;
+		var hour=today.getHours();
+		var min=today.getMinutes();
+		var second=today.getSeconds();
+		hour=checktime(hour);
+		min=checktime(min);
+		second=checktime(second);
+		var mytimes=document.getElementById('time');
+		mytimes.innerHTML="时间："+hour+":"+min+":"+second;
+		setTimeout("mytime()",1000);
+	}
+
+
+	function checktime(i){
+		if(i<10){
+			i="0"+i;
+		}
+		return i;
+	}
+
+</script>
+</html>

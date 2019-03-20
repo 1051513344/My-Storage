@@ -1,0 +1,27 @@
+.yellow{
+	color: yellow;
+}
+.blue{
+	color: blue;
+}
+.red{
+	color: red;
+}
+.pink{
+	color: pink;
+}
+.black{
+	color: black;
+}
+.green{
+	color: green;
+}
+.orange{
+	color: orange;
+}
+h5.first{
+	font-size: 25px;
+}
+#id{
+	background: blue;color: yellow;
+}

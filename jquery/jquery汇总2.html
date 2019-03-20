@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>jqery汇总</title>
+	<link rel="stylesheet" href="css/semantic.css">
+</head>
+<style>
+	.backcolor{
+		background-color: #3f9;
+	}
+	.blackcolor{
+		color: blue;
+	}
+</style>
+<body>
+	<div class="ui input">
+		<input type="text" id="input" placeholder="请输入">
+	</div>
+	
+	<div>
+		<ul id="ul1">
+			<li>1</li>
+			<li>2</li>
+			<li>3</li>
+			<li>4</li>
+			<li>5</li>
+		</ul>
+	</div>
+	<div>
+		<img src="C:\Users\lenovo\Desktop\图片\picture4.jpg" alt="发生错误" id="img1">
+	</div>
+	<input type="button" class="ui blue button" value="刷新" id="btn0">
+	<input type="button" class="ui red button" value="淡入" id="btn1">
+	<input type="button" class="ui red button" value="淡出" id="btn2">
+	<br>
+	<p>------------------分隔符-----------------------------------------------------------</p>
+	<br>
+
+
+	<div>
+		<h2 id="h2">伸展和收缩</h2>
+		<p>文本段文本段文本段文本段文本段文本段</p>
+		<p>文本段文本段文本段文本段文本段文本段</p>
+		<p>文本段文本段文本段文本段文本段文本段</p>
+		<p>文本段文本段文本段文本段文本段文本段</p>
+		<p>文本段文本段文本段文本段文本段文本段</p>
+	</div>
+	<input type="button" class="ui blue button" value="刷新" id="btn3">
+	<input type="button" class="ui red button" value="收缩" id="btn4">
+	<input type="button" class="ui red button" value="伸展" id="btn5">
+	<br>
+	<p>------------------分隔符-----------------------------------------------------------</p>
+	<br>
+	<a href="http://www.baidu.com" id="baidu"><input type="button" class="ui red button" value="百度首页" id="btn6"></a>
+
+	<input type="button" class="ui red button" value="切换网址" id="btn7">
+	
+
+	<br>
+	<p>------------------分隔符-----------------------------------------------------------</p>
+	<br>
+	<input type="button" class="ui orange button" value="全部p标签蓝化" id="btn8">
+
+	<br>
+	<p>------------------分隔符-----------------------------------------------------------</p>
+	<br>
+	<ul id="ul2">
+		<li>第一项</li>
+		<li>第二项</li>
+		<li>第三项</li>
+		<li>第四项</li>
+		<li>第五项</li>
+		<li>第六项</li>
+	</ul>
+	<input type="button" class="ui green button" value="除第三项外所有颜色" id="btn9">
+	<input type="button" class="ui blue button" value="第二项下一项" id="btn10">
+	<input type="button" class="ui blue button" value="第五项前一项" id="btn11">
+
+	<br>
+	<p>------------------分隔符-----------------------------------------------------------</p>
+	<br>
+	<h2>元素内部插入</h2>
+	<input type="button" class="ui green button" value="将newNodeone插入到ul2" id="btn12">
+	<input type="button" class="ui blue button" value="将newNodeone插入到ul2" id="btn13">
+	
+
+	<h2>元素外部插入</h2>
+	<input type="button" class="ui green button" value="将newNodeone插入到ul2" id="btn14">
+	<input type="button" class="ui blue button" value="将newNodeone插入到ul2" id="btn15">
+	<input type="button" class="ui blue button" value="将第二项替换成newNodeone" id="btn16">
+</body>
+<script type="text/javascript" src="js/jquery.js"></script>
+<script>
+	$('#btn0').click(function(){
+		window.location.reload();
+	});
+	$('#btn3').click(function(){
+		window.location.reload();
+	});
+	$(document).keydown(function(event){
+		if(event.keyCode=="13"){
+			alert("确定提交吗？");
+		}
+	});
+	$('#input').on("focus",function(){
+		$(this).attr({placeholder:""});
+	});
+	$('#input').on("blur",function(){
+		$(this).attr({placeholder:"请输入"});
+	});
+	$('#ul1>li').hover(
+		function(){
+		$(this).addClass('backcolor');
+	},
+	function(){
+		$(this).removeClass('backcolor');
+	}
+
+	)
+
+	$('#btn1').click(function(){
+		$('#img1').fadeIn('slow');
+	});
+	$('#btn2').click(function(){
+		$('#img1').fadeOut(1000);
+	});
+
+	$('#btn4').click(function(){
+		$('#h2~p').slideUp('slow');
+	});
+	$('#btn5').click(function(){
+		$('#h2~p').slideDown('slow');
+	});
+	$('#btn7').click(function(){
+		$('#btn6').val("搜狐首页");
+		$('#baidu').attr({href:"https://www.sohu.com"});
+	});
+	$('#btn8').click(function(){
+		$('p').toggleClass('blackcolor');
+	});
+	$('#btn9').click(function(){
+		$('#ul2>li:eq(2)').siblings().addClass('backcolor');
+	});
+	$('#btn10').click(function(){
+		$('#ul2>li:eq(1)').next().addClass('backcolor');
+	});
+	$('#btn11').click(function(){
+		$('#ul2>li:eq(4)').prev().addClass('backcolor');
+	});
+
+	var $newNodeone=$('<li>新节点</li>');
+	$('#btn12').click(function(){
+		$('#ul2').append($newNodeone);
+	});
+	$('#btn13').click(function(){
+		$('#ul2').prepend($newNodeone);
+	});
+	
+
+	$('#btn14').click(function(){
+		$('#ul2').after($newNodeone);
+	});
+	$('#btn15').click(function(){
+		$('#ul2').before($newNodeone);
+	});
+	$('#btn16').click(function(){
+		$('#ul2 li:eq(1)').replaceWith($newNodeone);
+	});
+</script>
+</html>

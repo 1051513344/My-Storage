@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>javascript汇总</title>
+	<link rel="stylesheet" href="css/semantic.css">
+</head>
+<body onload="mytime()">
+	<input type="button" value="欢迎你" onclick="javascript:alert('欢迎你的到来')" class="ui red button">
+	<div>
+		<h3 id="time">时间：</h3>
+	</div>
+	
+	<a href="javascript:location.href='javascript汇总1.html'">跳转</a><br>  
+	<a href="javascript:location.reload()">刷新本页</a>
+	
+
+
+
+</body>
+<script>
+
+	
+
+
+
+
+	var flag=confirm("确认要删除此条信息吗？");
+       if(flag==true)
+	        alert("删除成功！");
+       else
+	        alert("你取消了删除");
+
+
+	function mytime(){
+		var today=new Date;
+		var hour=today.getHours();
+		var min=today.getMinutes();
+		var second=today.getSeconds();
+		hour=checktime(hour);
+		min=checktime(min);
+		second=checktime(second);
+		var mytimes=document.getElementById('time');
+		mytimes.innerHTML="时间："+hour+":"+min+":"+second;
+		setTimeout("mytime()",1000);
+	}
+
+
+
+	function checktime(i){
+		if(i<10){
+			i="0"+i;
+		}
+		return i;
+	}
+	var str1="xzjivjlzxjcd";
+	var str2="SDDSZXxzcSDWxzzaaSDAF";
+
+	document.write("<h2>str1字符串是："+str1+"</h2>");
+	document.write("<p style='font-size:25px'>字符串的长度是："+str1.length+"</p>");
+	document.write("<br>");
+	document.write("<p style='font-size:25px'>第一个字符是："+str1.charAt(1)+"</p>");
+	document.write('<p style="font-size:25px">首次出现x的位置是：'+str1.indexOf("x",0)+"</p>");
+	// 从0开始首次出现x的位置
+	document.write('<p style="font-size:25px">首次出现x的位置是：'+str1.indexOf("x",1)+"</p>");
+	// 从1开始首次出现x的位置
+	document.write('<p style="font-size:25px">2~5的字符串是：'+str1.substring(2,5)+"</p>");
+	document.write('<p style="font-size:25px;letter-spacing:5px" >以j为切割字符串：'+str1.split("j")+"</p>");
+	var list=new Array(3);
+	list[0]="apple";
+	list[1]="android";
+	list[2]="bnanana";
+	for(var i=0;i<3;i++){
+		document.write("<h2>"+list[i]+"</h2>");
+
+	}
+	document.write('<p style="font-size:25px;letter-spacing:5px" >数组的长度是：'+list.length+"</p>");
+	document.write('<p style="font-size:25px;letter-spacing:5px" >join方法:'+list.join()+"</p>");
+	document.write('<p style="font-size:25px;letter-spacing:5px" >sort方法:'+list.sort()+"</p>");
+	document.write('<p style="font-size:25px;letter-spacing:5px" >push方法:'+list.push("Canada")+"</p>");
+	document.write('<p style="font-size:25px;letter-spacing:5px" >现在的list是:'+list+"</p>");
+	document.write('<h2>str2字符串是:'+str2+"</h2>");
+	document.write('<p style="font-size:25px;letter-spacing:5px" >将str2转化为小写:'+str2.toLowerCase()+"</p>");
+	document.write('<p style="font-size:25px;letter-spacing:5px" >将"100"转化为数值型:'+parseInt("100")+"</p>");
+	document.write('<p style="font-size:25px;letter-spacing:5px" >将"34.45"转化为浮点型:'+parseFloat("34.45")+"</p>");
+	document.write('<p style="font-size:25px;letter-spacing:5px" >检查str2是否是非数字:');
+	document.write(isNaN(str2)+"</p>");
+	var num=prompt("脚本提示","请输入考试科目的数量");
+	if(num<=0 || isNaN(num)){
+		alert("输入的数字非法");
+	}
+	var sum=0;
+	for(var j=0;j<num;j++){
+		sum+=parseInt(prompt("第"+ parseInt(j+1) +"门成绩"));
+	}
+	alert("总成绩为："+sum+"分");
+</script>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>part2</title>
+	<meta name="author" content="laoxu">
+	<meta name="description" content="a test">
+	<meta name="keywords" content="This is a test">
+	<!-- <base href="file:///D:/%E4%B8%BB%E6%9C%BA%E5%85%B1%E4%BA%AB%E6%96%87%E4%BB%B6%E5%A4%B9/~Java%E5%AD%A6%E4%B9%A0/%E3%80%90HTML5%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97%E3%80%91/"> -->
+	<!-- 以下a标签的href前会加上这个基地址拼接 -->
+	<style>
+		#p{
+			background-color: grey;
+			color: white;
+			padding: 0.5em;
+		}
+	</style>
+</head>
+<body>
+	<h1 id='wenben'>用户可修改文本</h1>
+	<p contenteditable="true">it is a row</p>
+
+	<p dir="rtl">this is right-to-left</p>
+	<p dir="ltr">this is left-to-right</p>
+	<h2 draggable="true">拖放</h2>
+	<textarea name="test" id="t" cols="30" rows="10" placeholder="拼写检查"></textarea>
+
+	<h1>Tab切换焦点</h1>
+	<h2>设置为-1则不会被tab选中</h2>
+	<form>
+		<label>
+			num:<input type="text" tabindex="1">
+		</label>
+		<label>
+			password:<input type="password" tabindex="2">
+		</label>
+		<label>
+			other:<input type="text" tabindex="-1">
+		</label>
+	</form>
+	<br>
+	<hr>
+	<a href="https://www.baidu.com" title="百度">baidu</a>
+	<a href="1.html">1.html</a>
+	<hr>
+	<a id='p'>my style</a>
+
+	<p><ruby>魑<rt>chi</rt>&nbsp;魅<rt>mei</rt>&nbsp;魍<rt>wang</rt>&nbsp;魉<rt>liang</rt></ruby></p>
+
+	<a href="#wenben">定位文本</a>
+</body>
+</html>

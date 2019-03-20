@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>jqery汇总</title>
+	<link rel="stylesheet" href="css/semantic.css">
+</head>
+<style>
+	.backcolor{
+		background-color: #ff0000;
+	}
+</style>
+<body>
+
+	<table border="1">
+		<tr>
+			<td>序号</td>
+			<td>订单</td>
+			<td>商品名称</td>
+			<td>价格</td>
+		</tr>
+		<tr>
+			<td>1</td>
+			<td>10045900</td>
+			<td>Niket透气减震运动鞋</td>
+			<td>299元</td>
+		</tr>
+		<tr>
+			<td>2</td>
+			<td>10045926</td>
+			<td>天意美鱼嘴女单鞋</td>
+			<td>189元</td>
+		</tr>
+		<tr>
+			<td>3</td>
+			<td>10045933</td>
+			<td>海贼王船模型</td>
+			<td>19.5元</td>
+		</tr>
+		<tr>
+			<td>4</td>
+			<td>10045300</td>
+			<td>福尔摩斯探案大全集</td>
+			<td>22.5元</td>
+		</tr>
+	</table>
+	<br>
+	<p>------------------分隔符-----------------------------------------------------------</p>
+	<br>
+	<div>
+		<h2 id="h2" style="line-height: 18px">你是人间的四月天</h2>
+		<p style="line-height: 18px">第一行</p>
+		<p style="line-height: 18px">第二行</p>
+		<p style="line-height: 18px">第三行</p>
+		<p style="line-height: 18px">第四行</p>
+	</div>
+	<br>
+	<p>------------------分隔符-----------------------------------------------------------</p>
+	<br>
+	
+	<div>
+		<img src="C:\Users\lenovo\Desktop\图片\picture1.jpg" alt="发生错误" id="img1">
+	</div>
+
+	<br>
+	<p>------------------分隔符-----------------------------------------------------------</p>
+	<br>
+	
+	<div>
+		<h2 id="h22">如何使用叮当网购物？</h2>
+		<ul id="ul1" style="display: none;">
+			<li>方式一：注册网站会员。</li>
+			<li>方式二：使用QQ、微信、微博等第三方平台登录。</li>
+		</ul>
+	</div>
+
+	<br>
+	<p>------------------分隔符-----------------------------------------------------------</p>
+	<br>
+	
+	<div>
+		<h2 id="h222">选取紧跟其后的单个元素</h2>
+		<p>颜色变化</p>
+		<p>颜色不变化</p>
+		<p>颜色不变化</p>
+	</div>
+
+	<div>
+		<h2 id="h2222">选取紧跟其后的所有元素</h2>
+		<p>颜色变化</p>
+		<p>颜色变化</p>
+		<p>颜色变化</p>
+		<p>颜色变化</p>
+		<p>颜色变化</p>
+		<p>颜色变化</p>
+	</div>
+
+
+
+	<br>
+	<p>------------------分隔符-----------------------------------------------------------</p>
+	<br>
+	<div>
+		<div>
+			<h2 id="h22222">选取所有带href的元素</h2>
+			<a href="https://www.baidu.com">百度首页</a>
+			<br><br>
+			<a href="https://www.sohu.com">搜狐首页</a>
+			<br><br>
+			<a href="ensadsafxtxt">开头en且含有txt</a>
+			<br><br>
+			<a href="C:\Users\lenovo\Desktop\图片\picture3.jpg">图片3</a>
+			<li id="li1" title="新闻要点">title=新闻要点且含有id的li</li>
+			<br><br>
+			<h4 class="backcolor">红色</h4>
+			<br><br>
+			<a href="#">
+				<img src="C:\Users\lenovo\Desktop\图片\picture2.jpg" alt="发生错误" id="img1">
+			</a>
+			
+		</div>
+			<input type="button" id="btn0" class="ui blue button" value="刷新">
+			<input type="button" id="btn1" class="ui red button" value="所有带href的元素添加绿色背景">
+			<input type="button" id="btn2" class="ui red button" value="选取百度首页">
+			<input type="button" id="btn3" class="ui red button" value="选取搜狐首页">
+			<input type="button" id="btn4" class="ui red button" value="选取en开头的href">
+			<input type="button" id="btn5" class="ui red button" value="选取.jpg结尾的href">
+			<input type="button" id="btn6" class="ui red button" value="选取含有'txt'的href">
+			<input type="button" id="btn7" class="ui red button" value="选取含有id且title为新闻要点的li">
+			<input type="button" id="btn8" class="ui red button" value="红色变蓝色">
+	</div>
+	<br>
+	<p>------------------分隔符-----------------------------------------------------------</p>
+	<br>
+
+	<div>
+		<ul id="ul2">
+			<li>1</li>
+			<li>2</li>
+			<li>3</li>
+			<li>4</li>
+			<li>5</li>
+			<li>6</li>
+		</ul>
+		<input type="button" id="btn9" class="ui blue button" value="刷新">
+		<input type="button" id="btn10" class="ui red button" value="选取第一个">
+		<input type="button" id="btn11" class="ui red button" value="选取奇数">
+		<input type="button" id="btn12" class="ui red button" value="选取偶数">
+		<input type="button" id="btn13" class="ui red button" value="选取最后一个">
+	</div>
+
+
+
+	<br>
+	<p>------------------分隔符-----------------------------------------------------------</p>
+	<br>
+
+
+
+</body>
+<script type="text/javascript" src="js/jquery.js"></script>
+<script>
+	$('tr:even').css('background-color','#ccc');
+	$('#h2').click(function(){
+		$(this).css('line-height','5px');
+		$('p').css('line-height','5px');
+	});
+	$('#img1').click(function(){
+		$(this).css('border','solid 5px red');
+	});
+	$('#h22').click(function(){
+		$('#ul1').css('display','block');
+		$(this).css('background-color','#3F9');
+	});
+	$('#h222').click(function(){
+		$('#h222+p').css('background-color','#0000ff');
+	});
+	$('#h2222').click(function(){
+		$('#h2222~p').css('background-color','#0000ff');
+	});
+	$('#btn0').click(function(){
+		window.location.reload();
+	});
+	$('#btn1').click(function(){
+		$('[href]').css('background-color','#3F9');
+	});
+	$('#btn2').click(function(){
+		$('[href="https://www.baidu.com"]').css('background-color','#3F9');
+	});
+	$('#btn3').click(function(){
+		$('[href="https://www.sohu.com"]').css('background-color','#3F9');
+	});
+	$('#btn4').click(function(){
+		$('[href^="en"]').css('background-color','#00ff00');
+	});
+	$('#btn5').click(function(){
+		$('[href$=".jpg"]').css('background-color','#00ff00');
+	});
+	$('#btn6').click(function(){
+		$('[href*="txt"]').css('background-color','#00ff00');
+	});
+	$('#btn7').click(function(){
+		$('li[id][title=新闻要点]').css('background-color','#0000ff');
+	});
+	$('#btn8').click(function(){
+		$('[class=backcolor]').css('background-color','#0000ff');
+	});
+	$('#btn9').click(function(){
+		window.location.reload();
+	});
+	$('#btn10').click(function(){
+		$('#ul2>li:first').addClass('backcolor');
+	});
+	$('#btn11').click(function(){
+		$('#ul2>li:odd').addClass('backcolor');
+	});
+	$('#btn12').click(function(){
+		$('#ul2>li:even').addClass('backcolor');
+	});
+	$('#btn13').click(function(){
+		$('#ul2>li:last').addClass('backcolor');
+	});
+
+</script>
+</html>
