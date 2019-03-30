@@ -1,0 +1,159 @@
+一、Ubuntu系统中安装Docker
+
+命令1 (下载)：sudo apt-get install docker.io
+
+命令2 (启动)：sudo systemctl start docker
+命令3 (激活)：sudo systemctl enable docker
+
+
+命令4 (版本)：docker -v
+
+命令5 (运行)：docker run ubuntu echo "hello world"
+#在ubuntu镜像中打印hello world
+
+
+启动容器格式：docker run IMAGE [COMMAND] [ARG...]
+
+
+
+启动ubuntu交互式shell例：
+docker run -i -t ubuntu /bin/bash
+
+
+
+在ubuntu交互式shell容器中使用命令：exit退出容器
+
+
+命令 (查看正则运行的容器)：docker ps
+
+命令 (查看所有的容器)：docker ps -a
+
+
+命令 (查看已经建立的容器(查询id))：docker inspect fb8459e50d71
+
+
+命令 (自定义容器名字(ubuntu01为例))：docker run --name=ubuntu01 -i -t ubuntu /bin/bash
+
+
+命令 (查看已经建立的容器(查询name))
+docker inspect ubuntu01
+
+
+命令 (重新启动已停止的容器(不是创建一个容器))：docker start -i ubuntu01
+
+命令 (删除容器)：docker rm 容器id
+
+例(删除id为fb8459e50d71的容器)：docker rm fb8459e50d71
+
+
+
+docker run --name=ubuntu01 -i -t ubuntu /bin/bash
+
+进入交互式容器：ctrl + p ctrl + q退出容器(在后台还在运行)
+
+使用命令：exit退出容器(真正的退出，在后台不运行)
+
+
+启动守护式容器：
+docker run -d 镜像名 [COMMAND] [ARG...]
+
+
+
+例：docker run --name ubuntu02 -d ubuntu /bin/sh -c "while true;do echo hello world; sleep 1; done"
+
+
+查看容器日志
+docker logs ubuntu02
+
+查看容器日志(带时间)
+docker logs -t ubuntu02
+
+
+查看容器日志(带时间+持续更新)
+docker logs -tf ubuntu02
+
+
+查看容器日志(带时间+持续更新+只显示最新的n条)
+docker logs -tf --tail n ubuntu02
+
+
+查看运行中容器的进程情况：
+docker top 容器名
+
+
+在运行中的容器内启动新进程：
+docker exec [-d] [-i] [-t] 容器名 [COMMAND] [ARG...]
+
+
+例在ubuntu02容器中启动bash交互式新进程：docker exec -i -t ubuntu02 /bin/bash
+
+
+停止守护式容器：
+docker stop 容器名 (发送信号停止)
+docker kill 容器名 (强制停止)
+
+
+
+
+
+部署静态网页端口映射例子(nginx):
+
+
+1、创建web容器：docker run -p 80 --name web -i -t ubuntu /bin/bash
+
+2、更新软件源：
+apt-get update
+
+3、下载nginx：
+apt-get install nginx
+
+4、安装vim
+apt-get install vim
+
+5、创建目录
+mkdir -p /var/www/html
+
+6、进入目录
+cd /var/www/html
+
+7、新建html页面
+vim index.html
+
+8、切回根目录
+cd /
+
+9、启动ngxin
+nginx
+
+10、查看端口情况
+ps -ef
+
+11、修改nginx配置文件
+vim /etc/nginx/sites-enabled/default
+
+12、将root行后的地址改为/var/www/html;保存退出
+
+
+ctrl + p ctral + q退出容器
+
+输入:docker port web 查看容器端口映射
+
+
+输入:docker top web 查看容器进程情况
+
+
+输入:curl http://127.0.0.1:32768
+
+即可看到网页内容
+
+如果是阿里云服务器或者其他带有安全组的服务器，那么需要在安全组里配置映射端口号，允许所有ip访问32768映射端口
+
+这样即可在32768端口访问到nginx服务器响应的页面/var/www/html/index.html内容
+
+
+
+
+
+在外部启动容器nginx
+docker exec web nginx
+
