@@ -1,0 +1,628 @@
+
+
+配置文件地址：/etc/nginx/sites-enabled
+下的default文件
+
+
+配置index.html前加上ab.html修改nginx默认索引页,输入网址后查看到的首页为ab.html页面内容
+
+
+查看网络端口占用情况：netstat -tunlp
+关闭nginx服务：kill pid
+开启nginx服务：/usr/sbin/nginx
+
+不重启生效配置文件：kill -HUP nginx主进程的pid (master行中)
+
+nginx的日志文件位置：/var/log/nginx
+下的.log文件
+
+
+nginx.pid文件位置：/run/nginx.pid
+
+可以不查看pid使用HUP信号不重启使nginx配置生效
+kill -HUP 'cat /run/nginx.pid'
+
+
+/usr/sbin/nginx发送信号命令(-s)：
+
+-s signal: 
+send signal to a master process: stop, quit, reopen, reload
+
+stop停止服务
+quit退出服务
+reopen重载日志文件
+reload重载配置文件
+
+
+
+------------------------------------------------------------------------------------------------------------------
+
+环境：虚拟环境(Docker 0.0.0.0:32770 --> 80)
+配置nginx(一)：
+路径：/etc/nginx/sites-enabled
+下的default文件
+
+
+
+在文件中输入：
+server {
+        listen 80;
+        server_name test.com;
+        root /var/www/html;
+        index ab.html;
+}
+
+
+代表test.com域名监听80端口；映射根目录为/var/www/html
+nginx首页索引页为ab.html
+重启服务：/usr/sbin/nginx -s reload
+
+测试：在windows中，打开C:\Windows\System32\drivers\etc下的hosts文件添加如下配置：
+
+47.92.231.74 test.com
+
+保存退出
+再在cmd中输入：ipconfig/flushdns
+刷新dns配置(hosts文件生效)
+
+在浏览器中输入：test.com:32770即可访问到ab.html页面的内容
+
+
+------------------------------------------------------------------------------------------------------------------
+
+环境：真实环境(服务器)
+配置nginx(二)：
+路径：/etc/nginx/sites-enabled
+下的default文件
+
+server {
+        listen 2019;
+        server_name test.com;
+        root /var/www/html;
+        index ab.html;
+}
+
+
+代表test.com域名监听2019端口；映射根目录为/var/www/html
+nginx首页索引页为ab.html
+重启服务：/usr/sbin/nginx -s reload
+
+
+测试：在windows中，打开C:\Windows\System32\drivers\etc下的hosts文件添加如下配置：
+
+47.92.231.74 test.com
+
+保存退出
+再在cmd中输入：ipconfig/flushdns
+刷新dns配置(hosts文件生效)
+
+
+在浏览器中输入：test.com:2019即可访问到ab.html页面的内容
+
+
+
+
+
+------------------------------------------------------------------------------------------------------------------
+
+
+环境：虚拟环境(Docker 0.0.0.0:32770 --> 80)
+配置nginx(三)：
+路径：/etc/nginx/sites-enabled
+下的default文件
+
+
+在文件开头输入：
+log_format  main  '$remote_addr - $remote_user [$time_local] "$request" '
+                  '$status $body_bytes_sent "$http_referer" '
+                  '"$http_user_agent" "$http_x_forwarded_for"';
+
+在文件中输入：
+server {
+        listen 80;
+        server_name test.com;
+        root /var/www/html;
+        index index.html;
+	access_log /var/log/test.com.access.log main;
+}
+
+
+代表test.com域名监听80端口；映射根目录为/var/www/html
+nginx首页索引页为index.html
+access日志文件位置在/var/log/test.com.access.log
+重启服务：/usr/sbin/nginx -s reload
+
+测试：在windows中，打开C:\Windows\System32\drivers\etc下的hosts文件添加如下配置：
+
+47.92.231.74 test.com
+
+保存退出
+再在cmd中输入：ipconfig/flushdns
+刷新dns配置(hosts文件生效)
+
+在浏览器中输入：test.com:32770即可访问到index.html页面的内容
+
+
+
+
+------------------------------------------------------------------------------------------------------------------
+
+
+日志截断shell脚本 (update_log.sh)
+每天更新日志
+
+#!/bin/bash
+LOG_PATH="/var/log/test.com.access.log"              #nginx日志位置
+BASIC_PATH="/var/log/date_logs"                      #存放日志位置
+bak=$BASIC_PATH/$(date -d yesterday +%Y%m%d).test_com.access.log       #日期命名每天的日志
+
+
+mv $LOG_PATH $bak                                    #将每天的日志剪切到存放日志的目录
+touch $LOG_PATH                                      #重新生成nginx日志
+
+kill -USR1 'cat /run/nginx.pid'                      #nginx不重启日志重载
+
+
+
+设置定时服务
+输入命令：crontab -e
+
+在文件中写入
+*/1 * * * * sh /var/log/date_logs/update_log.sh
+#表示每分钟执行一次
+
+
+------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+------------------------------------------------------------------------------------------------------------------
+
+环境：虚拟环境(Docker 0.0.0.0:32770 --> 80)
+配置nginx(四)：
+路径：/etc/nginx/sites-enabled
+下的default文件
+
+
+在文件开头输入：
+log_format  main  '$remote_addr - $remote_user [$time_local] "$request" '
+                  '$status $body_bytes_sent "$http_referer" '
+                  '"$http_user_agent" "$http_x_forwarded_for"';
+
+在文件中输入：
+server {
+        listen 80;
+        server_name test.com;
+        root /var/www/html;
+        index index.html;
+	access_log /var/log/test.com.access.log main;
+
+	location /img {
+		root /var;
+		index index.html;
+	}
+
+}
+
+
+代表test.com域名监听80端口；映射根目录为/var/www/html
+nginx首页索引页为index.html
+access日志文件位置在/var/log/test.com.access.log
+重启服务：/usr/sbin/nginx -s reload
+
+测试：在windows中，打开C:\Windows\System32\drivers\etc下的hosts文件添加如下配置：
+
+47.92.231.74 test.com
+
+保存退出
+再在cmd中输入：ipconfig/flushdns
+刷新dns配置(hosts文件生效)
+
+在浏览器中输入：test.com:32770即可访问到index.html页面的内容
+
+location使用
+
+location /img {
+	root /var;
+	index index.html;
+}
+
+表示根目录为var
+在根目录下寻找img目录
+找到img目录后显示img下的index.html
+
+测试：在浏览器中使用test.com:32770/img/index.html即可访问到/var/img/index.html
+
+------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+------------------------------------------------------------------------------------------------------------------
+
+环境：虚拟环境(Docker 0.0.0.0:32770 --> 80)
+配置nginx(五)：
+路径：/etc/nginx/sites-enabled
+下的default文件
+
+
+在文件开头输入：
+log_format  main  '$remote_addr - $remote_user [$time_local] "$request" '
+                  '$status $body_bytes_sent "$http_referer" '
+                  '"$http_user_agent" "$http_x_forwarded_for"';
+
+在文件中输入：
+server {
+        listen 80;
+        server_name test.com;
+        root /var/www/html;
+        index index.html;
+	access_log /var/log/test.com.access.log main;
+
+	location /img {
+	if ($remote_addr = 111.0.11.182){
+                return 403;
+        }
+
+		root /var;
+		index index.html;
+	}
+
+}
+
+
+代表test.com域名监听80端口；映射根目录为/var/www/html
+nginx首页索引页为index.html
+access日志文件位置在/var/log/test.com.access.log
+重启服务：/usr/sbin/nginx -s reload
+
+测试：在windows中，打开C:\Windows\System32\drivers\etc下的hosts文件添加如下配置：
+
+47.92.231.74 test.com
+
+保存退出
+再在cmd中输入：ipconfig/flushdns
+刷新dns配置(hosts文件生效)
+
+在浏览器中输入：test.com:32770即可访问到index.html页面的内容
+
+location使用
+
+location /img {
+	root /var;
+	index index.html;
+}
+
+表示根目录为var
+在根目录下寻找img目录
+找到img目录后显示img下的index.html
+
+测试：在浏览器中使用test.com:32770/img/index.html即可访问到/var/img/index.html
+
+
+若访问网站的对方ip=111.0.11.182那么就返回403错误 (封Ip)
+
+------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+------------------------------------------------------------------------------------------------------------------
+
+环境：虚拟环境(Docker 0.0.0.0:32770 --> 80)
+配置nginx(六)：
+路径：/etc/nginx/sites-enabled
+下的default文件
+
+
+在文件开头输入：
+log_format  main  '$remote_addr - $remote_user [$time_local] "$request" '
+                  '$status $body_bytes_sent "$http_referer" '
+                  '"$http_user_agent" "$http_x_forwarded_for"';
+
+在文件中输入：
+server {
+        listen 80;
+        server_name test.com;
+        root /var/www/html;
+        index index.html;
+	access_log /var/log/test.com.access.log main;
+
+	location /img {
+	if ($http_user_agent ~ QQBrowser){
+                rewrite ^.*$ /QQbrowser.html;
+                break;
+        }
+
+
+	if ($remote_addr = 111.0.11.182){
+                return 403;
+        }
+
+		root /var;
+		index index.html;
+	}
+
+}
+
+
+代表test.com域名监听80端口；映射根目录为/var/www/html
+nginx首页索引页为index.html
+access日志文件位置在/var/log/test.com.access.log
+重启服务：/usr/sbin/nginx -s reload
+
+测试：在windows中，打开C:\Windows\System32\drivers\etc下的hosts文件添加如下配置：
+
+47.92.231.74 test.com
+
+保存退出
+再在cmd中输入：ipconfig/flushdns
+刷新dns配置(hosts文件生效)
+
+在浏览器中输入：test.com:32770即可访问到index.html页面的内容
+
+location使用
+
+location /img {
+	root /var;
+	index index.html;
+}
+
+表示根目录为var
+在根目录下寻找img目录
+找到img目录后显示img下的index.html
+
+测试：在浏览器中使用test.com:32770/img/index.html即可访问到/var/img/index.html
+
+
+若访问网站的对方ip=111.0.11.182那么就返回403错误 (封Ip)
+
+
+如果访问的user_agent中有QQBrowser字符(QQ浏览器)那么就返回/var/www/html/QQbrowser.html
+
+------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+------------------------------------------------------------------------------------------------------------------
+
+环境：虚拟环境(Docker 0.0.0.0:32770 --> 80)
+配置nginx(七)：
+路径：/etc/nginx/sites-enabled
+下的default文件
+
+
+在文件开头输入：
+log_format  main  '$remote_addr - $remote_user [$time_local] "$request" '
+                  '$status $body_bytes_sent "$http_referer" '
+                  '"$http_user_agent" "$http_x_forwarded_for"';
+
+在文件中输入：
+server {
+        listen 80;
+        server_name test.com;
+        root /var/www/html;
+        index index.html;
+	access_log /var/log/test.com.access.log main;
+	fastcgi_intercept_errors on;
+	location /img {
+	if ($http_user_agent ~ QQBrowser){
+                rewrite ^.*$ /QQbrowser.html;
+                break;
+        }
+
+
+	if ($remote_addr = 111.0.11.182){
+                return 403;
+        }
+
+	error_page 404 = 404.html;
+
+		root /var;
+		index index.html;
+	}
+
+}
+
+
+代表test.com域名监听80端口；映射根目录为/var/www/html
+nginx首页索引页为index.html
+access日志文件位置在/var/log/test.com.access.log
+重启服务：/usr/sbin/nginx -s reload
+
+测试：在windows中，打开C:\Windows\System32\drivers\etc下的hosts文件添加如下配置：
+
+47.92.231.74 test.com
+
+保存退出
+再在cmd中输入：ipconfig/flushdns
+刷新dns配置(hosts文件生效)
+
+在浏览器中输入：test.com:32770即可访问到index.html页面的内容
+
+location使用
+
+location /img {
+	root /var;
+	index index.html;
+}
+
+表示根目录为var
+在根目录下寻找img目录
+找到img目录后显示img下的index.html
+
+测试：在浏览器中使用test.com:32770/img/index.html即可访问到/var/img/index.html
+
+
+若访问网站的对方ip=111.0.11.182那么就返回403错误 (封Ip)
+
+
+如果访问的user_agent中有QQBrowser字符(QQ浏览器)那么就返回/var/www/html/QQbrowser.html
+
+fastcgi_intercept_errors on;打开错误页面配置
+error_page 404 = 404.html;  配置404页面为/var/img/404.html
+
+
+------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+重写uri
+例子：(将正则匹配到的uri重写为后面的uri)
+location /ecshop {
+	rewrite goods-(\d+)\.html /ecshop/goods.php?id=$1;                         #正则反向引用$加引用索引
+	rewrite "article-(\d{1,7})\.html" /ecshop/article.php?id=$1;               #正则中有{}需要加上""
+	rewrite category-(\d+)-b(\d+).*\.html /ecshop/category.php?id=$1&brand=$2; #多个正则反向引用需要加上$1、$2...对应
+}
+
+
+
+
+
+
+
+gzip压缩
+
+gzip on;                 #开启Gzip
+gzip_min_length 1k;      #不压缩临界值，大于1K的才压缩，一般不用改
+gzip_buffers 4 16k;      #buffer不用改
+#gzip_http_version 1.0;  #用了反向代理的话，末端通信是HTTP/1.0，默认是HTTP/1.1
+gzip_comp_level 2;       #压缩级别，1-10，数字越大压缩的越好，时间也越长 (推荐6)
+gzip_types text/plain application/x-javascript text/css application/xml text/javascript application/x-httpd-php image/jpeg image/gif image/png;
+#进行压缩的文件类型，缺啥补啥就行了，JavaScript有两种写法，最好都写上吧，总有人抱怨js文件没有压缩，其实多写一种格式就行了
+
+gzip_vary off;           #是否传输gzip标志
+gzip_disable "MSIE [1-6]\.";#IE6对Gzip不怎么友好，不给它Gzip了
+
+
+
+配置后重启nginx
+浏览器输入test.com:32770
+审查元素显示：Accept-Encoding: gzip, deflate
+则成功开启gzip压缩
+
+
+
+
+
+设置缓存
+在location中添加：
+expires 30s; 缓存30秒
+expires 30m; 缓存30分
+expires 2h;  缓存2小时
+expires 30d; 缓存30天
+
+审查元素显示：Cache-Control: max-age=86400
+表示缓存1天(86400秒)
+
+
+
+
+
+缓存图片：
+location ~* \.(jpg|jpeg|gif|png){
+	root /var/www/html;
+	expires 1d;
+}
+
+PS:
+"~"代表正则
+"*"代表不区分大小写
+
+
+
+
+
+反向代理
+(nginx负责html，apache负责php)
+nginx端口：80
+apache端口：8080
+
+server {
+
+        listen 80;
+        server_name test.com;
+        root /var/www/html;
+        index index.nginx-debian.html index.htm index.php;
+        location ~ \.php$ {
+		proxy_set_header X-Forwarded-For $remote_addr;  #设置客户端ip地址避免显示反向代理的apache的ip地址
+                proxy_pass      http://127.0.0.1:8080;          #apache服务端口
+        }
+
+
+}
+
+
+
+
+负载均衡
+本地81端口、本地82端口接收负载
+在访问http://47.92.231.74:32783/xx.jpg 图片文件时启动81、82端口轮询负载
+(访问一次调用一次81端口负载，再次访问调用一次82端口负载，如此循环)
+
+
+
+log_format  main  '$remote_addr - $remote_user [$time_local] "$request" '
+                  '$status $body_bytes_sent "$http_referer" '
+                  '"$http_user_agent" "$http_x_forwarded_for"';
+
+upstream imageserver {
+        server 127.0.0.1:81 weight=1 max_fails=2 fail_timeout=3;    #weight表示权重，值越大权重越大，最大失败次数2次  #访问超时为3秒
+        server 127.0.0.1:82 weight=1 max_fails=2 fail_timeout=3;
+	ip_hash;                                                    #实现session粘贴，保存负载服务器的session
+}
+
+
+server {
+        listen 81;
+        root /var/www/html;
+        access_log /var/log/81_new.log main;    #本地81端口日志
+}
+
+server {
+        listen 82;
+        root /var/www/html;
+        access_log /var/log/82_new.log main;    #本地82端口日志
+}
+
+
+server {
+
+        listen 80;
+        server_name test.com;
+        root /var/www/html;
+        index index.nginx-debian.html index.htm index.php;
+        access_log /var/log/test.com.access.log main;
+        location ~* \.(jpg|jpeg|gif|png) {
+                proxy_pass http://imageserver;
+        }
+}
+
+
+
+
+
