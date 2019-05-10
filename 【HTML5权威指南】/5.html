@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="refresh" content="3">  <!-- 每隔1秒刷新一次 -->
+	<title>part5</title>
+</head>
+<body>
+	<div>
+		<h1>http-equiv刷新机制</h1>
+	</div>
+	强调元素<em>em</em>
+
+</body>
+<script>
+	function br(){
+		document.write("<br>");
+	}
+	function print(something){
+		document.write('<br>');
+		document.write(something);
+	}
+	print("数值转字符");
+	var mydata=(5).toString()+String(5);  //两者等效
+	print(mydata);
+	print("字符转数值")
+	var mystring_num1="5";
+	var mystring_num2="3";
+	print(Number(mystring_num1)+Number(mystring_num2));
+
+	var myarray=new Array();
+	myarray=[100,"xx","yy"];
+	print(myarray);
+	print(myarray[0]);
+	print(myarray[1]);
+	print(myarray[2]);
+	print('<footer>&copy;老徐提供技术支持</footer>');
+</script>
+</html>

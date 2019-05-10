@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<!-- <meta http-equiv="refresh" content="4"> -->
+	<title>part11</title>
+	<style> 
+		input[type="text"]:enabled
+		{
+		background:#ffff00;
+		}
+		input[type="text"]:disabled
+		{
+		background:#dddddd;
+		}
+		input:checked {
+	    height: 50px;
+	    width: 50px;
+		}
+		option:default {
+	    color: red;
+		}
+		input:valid
+		{
+			background-color: yellow;
+		}
+		input:invalid
+		{
+			border:2px solid red;
+		}
+		input:in-range{
+			background: green;
+		}
+		input:out-of-range{
+			background: red;
+		}
+
+	</style>
+
+</head>
+<body>
+
+<form action="">
+First name: <input type="text" value="Mickey" /><br>
+Last name: <input type="text" value="Mouse" /><br>
+Country: <input type="text" disabled="disabled" value="Disneyland" /><br>
+</form>
+
+<input type="checkbox">
+
+<select multiple>
+    <option>选项1</option>
+    <option>选项2</option>
+    <option>选项3</option>
+    <option selected>选项4</option>
+    <option>选项5</option>
+    <option>选项6</option>
+</select>
+
+<hr>
+
+<h3> :valid 选择器实例演示。</h3>
+
+<input type="email" value="support@exampel.com" />
+
+<hr>
+<h3> :invalid 选择器实例演示。</h3>
+
+<input type="email" value="supportEmail" />
+
+<p>请输入合法 e-mail 地址，查看样式变化。</p>
+
+<hr>
+<input type="number" min="0" max="100" value="1" id="price" name="price">
+
+<hr>
+
+
+
+
+</body>
+</html>

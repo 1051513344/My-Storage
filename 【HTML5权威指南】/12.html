@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<!-- <meta http-equiv="refresh" content="4"> -->
+	<title>part12</title>
+	<style type="text/css"> 
+		input:required{
+			background: green;
+		}
+		input:optional{
+			background: red;
+		}
+		a:link{
+			background: yellow;
+		}
+		a:visited{
+			background: green;
+		}
+		p:hover{
+			background: orange;
+		}
+		:active{
+			border: thin solid black;
+		}
+		input:focus{
+			border: thin solid black;
+			padding: 4px;
+		}
+		p
+		{
+		color:#000000;
+		}
+		:not(p)
+		{
+		color:#ff0000;
+		}
+		:target
+		{
+			border: 2px solid #D4D4D4;
+			background-color: #e5eecc;
+		}
+	</style>
+
+</head>
+<body>
+
+
+
+<h3>:required匹配有required属性的Input</h3>
+<h3>:optional匹配没有required属性的Input</h3>
+<label>有required: <input type="text" required=""></label>
+<label>没有required: <input type="text"></label>
+<hr>
+<a href="http://www.w3school.com.cn">W3Sschool</a>
+<a href="http://www.google.com">Google</a>
+<a href="http://www.wikipedia.org">Wikipedia</a>
+
+<p><b>注释：</b>:link 选择器为未被访问过的链接设置样式。</p>
+
+
+<hr>
+<a href="http://www.w3school.com.cn">W3Sschool</a>
+<a href="http://www.google.com">Google</a>
+<a href="https://www.baidu.com" target="_blank">baidu</a>
+
+<p><b>注释：</b>:visited 选择器为已被访问的链接设置样式。</p>
+
+<hr>
+
+<p>鼠标悬停字体背景变橘色</p>
+
+<hr>
+<h3>:active</h3>
+<button>背景变色</button>
+<hr>
+
+<input type="text">
+
+
+<hr>
+<h1>这是标题</h1>
+
+<p>这是一个段落。</p>
+
+<p>这是另一个段落。</p>
+
+<div>这是 div 元素中的文本。</div>
+
+<br>
+
+<a href="http://www.w3school.com.cn" target="_blank">访问 W3School ！</a>
+
+<hr>
+<h1>This is a heading</h1>
+
+<p><a href="#news1">Jump to New content 1</a></p>
+<p><a href="#news2">Jump to New content 2</a></p>
+
+<p>Click on the links above and the :target selector highlight the current active HTML anchor.</p>
+
+<p id="news1"><b>New content 1...</b></p>
+<p id="news2"><b>New content 2...</b></p>
+</body>
+</html>

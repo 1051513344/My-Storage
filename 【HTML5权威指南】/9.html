@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="refresh" content="4">
+	<title>part9</title>
+	<style>
+		p:first-child
+		{
+		background-color:yellow;
+		}
+		p:last-child
+		{
+		background-color:blue;
+		}
+		p.only_child:only-child
+		{
+		background:#ff0000;
+		}
+		p.only_of_type:only-of-type
+		{
+			background:#ff0000;
+		}
+	</style>
+</head>
+<body>
+	<p>这个段落是其父元素（body）的首个子元素。</p>
+
+	<h1>欢迎访问我的主页</h1>
+	<p>这个段落不是其父元素的首个子元素。</p>
+
+	<div>
+		<p>这个段落是其父元素（div）的首个子元素。</p>
+		<p>这个段落不是其父元素的首个子元素。而是最后一个元素</p>
+	</div>
+	<hr>
+	<div><p class="only_child">This is a paragraph.</p></div>
+
+	<div><span>This is a span.</span><p class="only_child">This is a paragraph.</p></div>	
+	<hr>
+	<div><p class="only_of_type">This is a paragraph.</p></div>
+
+	<div><p class="only_of_type">This is a paragraph.</p><p class="only_of_type">This is a paragraph.</p></div>
+</body>
+</html>

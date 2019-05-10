@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>counter小实例</title>
+    <style>
+        #box{width:300px; height:300px; background:greenyellow; padding:30px; margin:100px auto;
+        counter-reset:count;
+        }
+        lable{margin-left:20px;}
+        .check{counter-increment:count;}
+        .count:after{color:red; font-size:20px; content:counter(count);}
+    </style>
+</head>
+<body>
+<div id="box">
+    <p>选出你喜欢的他或她</p>
+    <input type="checkbox" /><lable>胡歌</lable><br/>
+    <input type="checkbox" /><lable>王昱珩</lable><br/>
+    <input type="checkbox" /><lable>鲍云</lable><br/>
+    <input type="checkbox" /><lable>梁紫晨</lable><br/>
+    <input type="checkbox" /><lable>陈默</lable><br/>
+    <input type="checkbox" /><lable>唐嫣</lable><br/>
+    <input type="checkbox" /><lable>杨幂</lable><br/>
+<span class="count">你总共选择了</span><span>位</span>
+</div>
+<script>
+    var aIpt = document.getElementsByTagName('input');
+    var len = aIpt.length;
+    for(var i=0;i<len;i++){
+        aIpt[i].index = i;
+        aIpt[i].onclick = function(){
+            if(this.checked){
+                this.className='check';
+            }else{
+                this.className='';
+            }
+        }
+ 
+    }
+</script>
+</body>
+</html>

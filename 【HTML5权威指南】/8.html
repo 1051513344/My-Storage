@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="refresh" content="3">
+	<title>part8</title>
+	<style>
+		[href]{
+			border: solid black;
+		}
+		/*选取所有含有href属性的元素*/
+
+		[class~="class1"]{
+			color: orange;
+		}
+		/*选取class含有class1属性的元素*/
+		[lang|="en"]
+		{
+		background: yellow;
+		}
+		/*选取lang中有en的元素*/
+
+		p.first::first-line{
+			background: blue;
+		}
+		/*class为first的p标签的第一行使用蓝色背景样式*/
+
+
+		p.first_zimu::first-letter{
+			font-size: 2em;
+		}
+		/*class为first_zimu的p标签的第一个字母改变字体大小*/
+
+		a.add:before{
+			content: "<This is a>: ";
+		}
+		a.add:after{
+			content: " <a is end!>";
+		}
+
+
+
+        .box{width:300px; height:200px; background:#000; color:#fff; padding:30px;font-size:20px;}
+        p{counter-reset:count 3;counter-increment: count;display:inline-block;}
+        p:after{
+            content:counter(count);
+        }
+        
+
+	</style>
+
+</head>
+<body>
+	<a href="swinpage.html">xxx</a>
+	<a href="swinpage.html">zz</a>
+	<a href="swinpage.html">x</a>
+	<a href="swinpage.html">z</a>
+	<a href="swinpage.html">sad</a>
+
+	<p class="class1"> 匹配包含class1的class的元素</p>
+
+
+
+	<p lang="en">Hello!</p>
+	<p lang="en-us">Hi!</p>
+	<p lang="en-gb">Ello!</p>
+	<p lang="us">Hi!</p>
+	<p lang="zh">nihao!</p>
+
+	<p class="first">xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+	xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</p>
+
+	<p class="first_zimu">
+		xzcssssssssssssssssssssssssssssssssssss
+		sadsdddddddddddddddddddxzdsadsa
+		sdafsfsfsfsad
+	</p>
+
+
+	<a class="add">为class为add的a标签添加前后缀</a>
+
+
+
+	<div class="box">
+	    <p>3的后面是</p>
+	    <span></span>
+	</div>
+
+	
+	
+</body>
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>part4</title>
+	<style>
+		p{
+			font-size: 15pt;
+			height: 2em;
+			/*字号挂钩相对单位*/
+		}
+		p.class1{
+			background: grey;
+			color: white;
+			font-size: 20pt;
+			width: calc(80% - 20px);
+		}
+	</style>
+</head>
+<body>
+	<div>
+		<p>I love</p>
+		<p>sdxz</p>
+		<p>间隔</p>
+	</div>
+	<div>
+		<p class="class1">sdsacxn</p>
+		<p class="class1">sdsacxn</p>
+		<p class="class1">sdsacxn</p>
+	</div>
+</body>
+<script>
+	var data={
+		name:'我',
+		age:'15',
+		sex:'男',
+		printmethod:function(){
+			document.writeln('打印方法');
+		},
+		printshuxing:function(){
+			document.writeln('属性一：'+this.name+'属性二：'+this.age+'属性三：'+this.sex);
+		}
+	}
+	document.writeln('name is '+data.name+'age is '+data.age+'sex is '+data.sex);
+	document.writeln('<br>');
+	data.printmethod();
+	data.name='修改后的我';
+	data["age"]='50';
+	document.writeln('<br>');
+	document.writeln('name is '+data.name+'age is '+data.age+'sex is '+data.sex);
+	document.writeln('<br>');
+	data.printshuxing();
+	document.writeln('<br>');
+
+	document.writeln('打印类中所有属性和方法：');
+	for (var method_attr in data){
+		document.writeln('<br>');
+		document.writeln(method_attr);
+	}
+
+	document.writeln('<br>');
+	document.writeln('添加属性new_one');
+	data.new_one='I am new_one';
+	document.writeln('打印类中所有属性和方法：');
+	for (var method_attr in data){
+		document.writeln('<br>');
+		document.writeln(method_attr);
+	}
+
+	document.writeln('<br>');
+	document.writeln('添加新方法new_method');
+	data.new_method=function(){
+		document.writeln('I am new_method');
+	}
+	document.writeln('打印类中所有属性和方法：');
+	for (var method_attr in data){
+		document.writeln('<br>');
+		document.writeln(method_attr);
+	}
+
+	document.writeln('<br>');
+	document.writeln('删除方法new_method');
+	data.new_method=function(){
+		document.writeln('I am new_method');
+	}
+	document.writeln('打印类中所有属性和方法：');
+	delete data.new_method;
+	for (var method_attr in data){
+		document.writeln('<br>');
+		document.writeln(method_attr);
+	}
+
+	document.writeln('<br>');
+	document.writeln('判断name是否在data中');
+	var hasName="name" in data;
+	document.writeln('<br>');
+	document.writeln('答案：'+hasName);
+	var hasData="data" in data;
+	document.writeln('<br>');
+	document.writeln('答案：'+hasData);
+
+
+
+</script>
+</html>

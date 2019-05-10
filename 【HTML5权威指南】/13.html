@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="refresh" content="4">
+	<title>part13</title>
+</head>
+<style>
+	p.putong{
+		border-width: 5px;/*thin medium thick*//*细中粗*/ 
+		border-style: solid;
+		border-color: black;
+		border-left-width: 10px;
+		border-left-style: dashed;
+		border-top-width: 10px;
+		border-top-style: dashed;
+	}
+	p.easy_border{
+		border: medium solid black;
+		border-top: solid 10px;
+	}
+	p.yuanjiao{
+		border: medium solid black;
+		border-top-left-radius: 20px 15px;
+	}
+	p.ying{
+		box-shadow: 5px 4px 10px 2px gray;
+	}
+	p.ying2{
+		box-shadow: 5px 4px 10px 2px gray, 4px 4px 6px gray inset;
+	}
+	p.outline{
+		outline: thick solid red;
+	}
+	p.padding{
+		border: thin solid black;
+		padding: 0.6em 0.6em 0.6em 0.6em;
+	}
+	p.duicheng{
+		border: thick solid black;
+		border-radius: 1em 4em 1em 4em;
+		padding: 5px 25px 5px 25px;
+	}
+	textarea.scroll{
+		overflow: scroll;
+	}
+</style>
+<body>
+	<div>
+		
+		<p class="putong">测试</p>
+	</div>
+	<div>
+		<p class="easy_border">测试border</p>
+	</div>
+
+		<p class="yuanjiao">
+			圆角边框圆角边框圆角边框圆角边框圆角边
+		框圆角边框圆角边框圆角边框圆
+	角边框圆角边框圆角
+边框圆角边框圆角
+边框圆角边框圆角边框圆
+角边框圆角边框圆角边框边框圆角边框圆角边框圆边框圆角边框圆角边框圆边框圆角边框圆角边框圆边框圆角边框圆角边框圆边框圆角边框圆角边框圆边框圆角边框圆角边框圆边框圆角边框圆角边框圆边框圆角边框圆角边框圆边框圆角边框圆角边框圆边框圆角边框圆角边框圆边框圆角边框圆角边框圆边框圆角边框圆角边框圆边框圆角边框圆角边框圆边框圆角边框圆角边框圆边框圆角边框圆角边框圆边框圆角边框圆角边框圆边框圆角边框圆角边框圆边框圆角边框圆角边框圆边框圆角边框圆角边框圆</p>
+
+<p id="first" style="border-radius: 20px / 15px">圆角边框简写</p>
+<p id="second" style="border-radius: 50% 20px 25% 5em / 25% 15px 40px 55%">圆角边框简写</p>
+
+<hr>
+
+<p class="ying">ying</p>
+<p class="ying2">ying2</p>
+<p class="outline">应用轮廓</p>
+<p class="padding">内边距</p>
+<p class="duicheng">对称边框</p>
+<textarea name="" id="" cols="30" rows="10" class="scroll"></textarea>
+<textarea name="" id="" cols="30" rows="10"></textarea>
+
+<p id="hidden" style="visibility: hidden;">隐藏内容</p>
+<button id="block" onclick="block()">显示隐藏</button>
+
+<hr>
+
+<div style="display: -webkit-box;">
+	<p style="-webkit-box-flex: 3;width: 150px;border: medium double black;background-color: lightgray;margin: 2px;">ssssssssssssssssssssssssssss
+	ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss</p>
+	<p style="-webkit-box-flex: 1;width: 150px;border: medium double black;background-color: lightgray;margin: 2px;">55555555555555555555555555555
+	55555555555555555555555555555555555555555</p>
+	<p style="width: 150px;border: medium double black;background-color: lightgray;margin: 2px;">llllllllllllllllllll
+		lllllllllllllllllllllllllllllll
+	lllllllllllllllllllllll
+	llllllllllllllll
+	llllll
+	llllllllllllll
+	llllllllllllll
+	lllll
+llz</p>
+</div>
+
+<hr><br>
+
+<div>
+	<p style="width: 400px;margin: 5px;padding: 5px;border: thick solid orange;white-space: pre-line;background-color: lightgrey;">ssssssssssssssssssssssssssssssssssssssssssss
+	ssssssssssssssssssssssssssssssssssssssssssss
+ssssssssssssssssssssssssssssssssssssssssssssssss
+ssssssssssssssssssssssssssssssssssssssssssssssss
+sssssssssssssssssssssssss
+sssssssssssssssssss
+sssss</p>
+</div>
+
+
+
+
+</body>
+<script>
+	function block(){
+		var x=document.getElementById('hidden');
+		x.style.visibility='visible';
+	}
+</script>
+</html>
