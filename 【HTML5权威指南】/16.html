@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="refresh" content="3">
+	<title>part15</title>
+	<style>
+		
+	</style>
+</head>
+<body>
+	<p id="p1">123</p>
+	<p id="p2">456</p>
+	<p id="apple" name="apple" data-fruit="apple" data-banana="banana">apple</p>
+	<div id="div1">
+		<p>xxxxxxxxx</p>
+	</div>
+
+	<p id="testclasslist" class="class1 class2 class3">123</p>
+	<table style="border: thick solid black;">
+		<thead>
+			<tr id="tr">
+				<td>姓名</td>
+				<td>学号</td>
+				<td>成绩</td>
+			</tr>
+		</thead>
+		<tbody id="tbody">
+			<tr id="tr1">
+				<td>张三</td>
+				<td>1</td>
+				<td>80分</td>
+			</tr>
+			<tr id="tr2">
+				<td>李四</td>
+				<td>2</td>
+				<td>85分</td>
+				<td>其他</td>
+			</tr>
+		</tbody>
+	</table>
+
+	<button id="btn" onclick="onbtn()">删除元素</button>
+	<button onclick="onbtn2()">添加元素</button>
+
+</body>
+<script>
+	document.write('<pre>');
+	var clalist=document.getElementById('testclasslist').classList;
+	document.writeln(clalist);
+	for(var i =0;i<clalist.length; i++){
+		document.writeln("类"+i+"："+clalist[i]);
+	}
+	var data=document.getElementById('apple');
+	for(var i in data.dataset){
+		document.writeln(i);
+	}
+	document.writeln("dataset："+data.dataset["fruit"]);
+
+	var tr=document.getElementById('tr');
+	var tr1=document.getElementById('tr1');
+	tr.appendChild(document.createElement('td')).appendChild(document.createTextNode('其他'));
+	tr1.appendChild(document.createElement('td')).appendChild(document.createTextNode('其他'));
+	function onbtn(){
+		tr2=document.getElementById('tr2');
+		tr2.parentNode.removeChild(tr2);
+	}
+	function onbtn2(){
+		var table_body=document.getElementById('tbody');
+		var newtr=document.getElementById('tr2').cloneNode(true);
+		table_body.appendChild(newtr);
+	}
+	document.write('</pre>');
+</script>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="refresh" content="3">
+	<title>part14</title>
+	<style>
+		#test{
+			border: medium solid black;
+			font-size: x-large;
+			-webkit-transition-delay: 10ms;/*过渡延时*/
+			-webkit-transition-duration: 250ms;/*过渡总时间*/
+			text-shadow: 5px 5px 25px blue;
+		}/*反向过渡*/
+		#test:hover{
+			font-size: x-large;
+			border: medium solid white;
+			background-color: green;
+			color:white;
+			padding: 4px;
+			-webkit-transition-delay: 100ms;	/*过渡延时*/
+			-webkit-transition-property: background-color,color,padding,font-size,border;  /*过渡应用指定的样式*/
+			-webkit-transition-duration: 500ms;/*过渡总时间*/
+		}/*正向过渡*/
+	</style>
+</head>
+<body>
+
+	<p style="direction: ltr;">文本方向向左</p>
+	<p style="direction: rtl;">文本方向向右</p>
+	<div style="width: 200px;height: 200px;border: thin solid green;">
+		<p style="word-wrap: break-word;">hello hellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohello</p>
+	</div>
+	<div style="width: 200px;height: 200px;border: thin solid green;">
+		<p style="word-wrap: normal;">hello hellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohello</p>
+	</div>
+	<div style="width: 200px;height: 200px;border: thin solid green;">
+		<p style="text-indent: 10%">首行缩进</p>
+	</div>
+	<div style="width: 200px;height: 200px;border: thin solid green;">
+		<p style="word-wrap: break-word;"><h1 style="text-shadow: 5px 5px 20px orange;">文本阴影</h1></p>
+	</div>
+
+	<p id="test">测试过渡</p>
+</body>
+</html>
