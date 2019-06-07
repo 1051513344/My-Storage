@@ -90,6 +90,16 @@ git branch other;            创建other分支
 git checkout other;          切换到other分支
 git branch -b other;         创建other分支并且切换到other分支
 
+将其他分支合并到master分支
+1、先切换到其他分支：
+git checkout other;
+2、写好代码
+3、切换回来：
+git checkout master
+4、执行将other分支合并到master
+git merge other;
+
+
 
 
 
