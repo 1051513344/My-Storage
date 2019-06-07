@@ -185,7 +185,30 @@ git push origin [tag_name]
 
 
 
+标签的具体使用
 
-
+1、先添加1.0标签
+git tag v1.0
+(记录此时的状态)
+2、编辑代码文件
+test.txt
+123
+3、添加2.0标签
+git tag v2.0
+4、切换到1.0标签
+git checkout v1.0
+5、查看代码文件
+cat test.txt
+123
+6、编辑代码文件
+test.txt
+123
+456
+6、切换到2.0标签
+git checkout v2.0
+7、查看代码文件
+cat test.txt
+123
+456
 
 
