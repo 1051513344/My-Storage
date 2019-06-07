@@ -98,6 +98,8 @@ git checkout other;
 git checkout master
 4、执行将other分支合并到master
 git merge other;
+5、上传到master
+git push origin
 
 
 
