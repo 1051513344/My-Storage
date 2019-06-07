@@ -168,6 +168,23 @@ git push origin
 -------------------------
 
 
+标签
+
+1、查看版本标签
+git tag
+2、创建版本标签
+git tag [tag_name]
+3、切换到版本
+git checkout [tag_name]
+4、查看标签提交的信息
+git show [tag_name]
+5、删除标签
+git tag -d [tag_name]
+6、将标签上传到github
+git push origin [tag_name]
+
+
+
 
 
 
