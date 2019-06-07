@@ -104,22 +104,35 @@ git push origin
 
 
 其他分支上传到主分支(master)
+-------------------------
+# other分支上的操作
 
 1、切换到其他分支
 git checkout other
 2、创建分支并关联分支
 git push --set-upstream origin other
 执行之后就可以在github上看到other分支
-3、切换到主分支
+3、在原先基础上修改代码文件
+4、添加到other分支的工作区
+git add .
+5、提交申请
+git commit -m "other提交"
+6、上传到other分支上
+git push origin
+
+-------------------------
+# 主分支上的操作
+
+7、切换到主分支
 git checkout master
-4、将修改提交到主分区
-git metge other
-5、上传到master
-git push master
+8、将修改提交到主分区
+git merge other
+9、上传到master
+git push origin
 
+-------------------------
 
-
-
+注：other分支的代码文件要以原master分支的代码文件为基础，若不一样的话就会造成功能不同而报错。
 
 
 
