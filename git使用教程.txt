@@ -74,6 +74,15 @@ git reflog                   查看所有分支的所有操作记录
 git reset --hard HEAD^;      回退到上一版本
 git reset --hard HEAD^^;     回退到上上版本
 git reset --hard HEAD-100;   回退到100个版本
+git checkout -- file;        将file撤销到最初状态
+
+
+分支
+git branch ;                 查看当前所在分支
+git branch other;            创建other分支
+git checkout other;          切换到other分支
+
+
 
 
 
