@@ -103,6 +103,25 @@ git push origin
 
 
 
+其他分支上传到主分支(master)
+
+1、切换到其他分支
+git checkout other
+2、创建分支并关联分支
+git push --set-upstream origin other
+执行之后就可以在github上看到other分支
+3、切换到主分支
+git checkout master
+4、将修改提交到主分区
+git metge other
+5、上传到master
+git push master
+
+
+
+
+
+
 
 
 
