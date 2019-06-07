@@ -81,7 +81,7 @@ git checkout -- file;        将file撤销到最初状态
 git branch ;                 查看当前所在分支
 git branch other;            创建other分支
 git checkout other;          切换到other分支
-
+git branch -b other;         创建other分支并且切换到other分支
 
 
 
