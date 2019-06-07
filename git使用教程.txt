@@ -52,3 +52,29 @@ git clone https://xxxxxxxx/x/xxx.git
 网址为：https://github用户名.github.io/仓库名/
 
 
+
+命令报错解决办法：
+若 git push -u origin master报错
+则原因是本地和github上的内容不一致导致
+须执行：
+git pull origin master
+再执行：
+git push origin master
+
+
+最终解决办法：
+先将远程仓库克隆到本地： git clone 仓库地址
+在本地中使用： git push origin master
+
+
+其他相关命令：
+git log;                     查看版本日志
+git log --pretty=oneline;    简略的显示版本日志
+git reflog                   查看所有分支的所有操作记录
+git reset --hard HEAD^;      回退到上一版本
+git reset --hard HEAD^^;     回退到上上版本
+git reset --hard HEAD-100;   回退到100个版本
+
+
+
+
