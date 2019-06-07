@@ -137,4 +137,38 @@ git push origin
 
 
 
+下次使用分支：
+
+1、在本地克隆仓库
+git clone github仓库地址
+2、在本地仓库创建其他分支
+git branch other
+3、切换到其他分支
+git checkout other
+4、在本地仓库中将其他分支同步下来
+git pull origin other
+5、在原先基础上修改代码文件
+6、添加到other分支的工作区
+git add .
+7、提交申请
+git commit -m "other提交"
+8、上传到other分支上
+git push origin
+
+-------------------------
+# 主分支上的操作
+
+9、切换到主分支
+git checkout master
+10、将修改提交到主分区
+git merge other
+11、上传到master
+git push origin
+
+-------------------------
+
+
+
+
+
 
